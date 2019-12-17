@@ -3,30 +3,44 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 通知クラス
+ */
 public final class Notifier
 {
-    private static final Notifier Instance = new Notifier();
+    private static final Notifier Instance = new Notifier(); // 通知インスタンス定数
 
-    private final Object lock = new Object();
+    private final Object lock = new Object(); // 鍵インスタンス
+    
+    private final Map<String, List<MobileDevice>> userMobileDevices = new HashMap<>(); // 要素のデータ型の指定
 
-    // 利用者ごとに携帯端末を管理
-    private final Map<String, List<MobileDevice>> userMobileDevices = new HashMap<>();
-
-    // 携帯端末ごとに通知メッセージを保持
     private final Map<MobileDevice, List<String>> messagesToDeliver = new HashMap<>();
 
     private volatile boolean active = true;
 
+    /**
+     * 
+     * @return Notifier
+     */
     public static Notifier getInstance()
     {
         return Instance;
     }
 
+    /**
+     * 
+     */
     private Notifier()
     {
 
     }
 
+    /**
+     * ユーザ登録メソッド
+     * 
+     * @param user
+     * @param device
+     */
     public void register(String user, MobileDevice device)
     {
         synchronized(lock)
@@ -45,22 +59,90 @@ public final class Notifier
         }
     }
 
+    /**
+     * 通知メッセージ送信メソッド
+     * 
+     * @param user
+     * @param messages
+     */
     public void send(String user, String messages)
     {
-        List<MobileDevice> devices = new ArrayList<>();
+        List<MobileDevice> devices = new ArrayList<>(); // 要素のデータ型の指定
 
-        synchronized(lock)
-        {
-            // Map型でキー名の検索を行う
-            if(userMobileDevices.containsKey(users)) {
-                for(MobileDevice device : userMobileDevices.get(user)) {
+        synchronized(lock) {
+
+            if(userMobileDevices.containsKey(user)) { // Map型でキー名の検索を行う。Booleanを返却
+
+                for(MobileDevice device : userMobileDevices.get(user)) { // メソッドの返却値から要素を繰り返し抽出
                     List<String> messageList = messagesToDeliver.get(device);
+
+                    if(messageList == null) {
+                        messageList = new ArrayList<>();
+                        messagesToDeliver.put(device, messageList);
+                    }
                 }
+            }
+        }
+
+        for (MobileDevice device : devices) {
+            synchronized (device) {
+                device.notifyAll();
             }
         }
 
     }
 
+    /**
+     * 
+     * @param device
+     */
+    public void loopForMesseages(MobileDevice device)
+    {
+        while (active) { // TRUEの間だけ反復処理
+            List<String> messageList;
 
+            synchronized (lock) {
+                messageList = messagesToDeliver.remove(device);
+            }
 
+            if (messageList != null) {
+                device.getListener().onNotificationReceived(messageList);
+            }
+
+            synchronized (device) {
+                try {
+                    device.wait(3000L);
+                } catch (InterruptedException e) {
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 
+     */
+    public void shutdown()
+    {
+        active = false;
+        List<MobileDevice> devices = new ArrayList<>();
+
+        synchronized(lock) {
+            messagesToDeliver.clear();
+
+            for(String user : userMobileDevices.keySet()) {
+                for(MobileDevice device : userMobileDevices.get(user)) {
+                    devices.add(device);
+                }
+            }
+
+            userMobileDevices.clear();
+        }
+
+        for (MobileDevice device : devices) {
+            synchronized (device) {
+                device.notifyAll();
+            }
+        }
+    }
 }
