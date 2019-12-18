@@ -24,14 +24,14 @@ public class Tester
     private static void createUserMobileDevice(String user, String name)
     {
         MobileDevice device = new MobileDevice(
-            name, messageList -> System.out.println(name + ":" + messageList) // ラムダ式でのメソッド定義（引数->処理内容）
+            name, messageList -> System.out.println(name + ":" + messageList) // ラムダ式での無名メソッド定義（引数->処理内容）
             );
         
         Notifier notifier = Notifier.getInstance();
         
         notifier.register(user, device);
 
-        new Thread(()->{ //ラムダ式でのメソッド定義（引数なし->処理内容）
+        new Thread(()->{ //ラムダ式での無名メソッド定義（引数なし->処理内容）
             notifier.loopForMesseages(device);
                 System.out.printf("システム終了：%sの%s%n", user, name);
             }).start();
