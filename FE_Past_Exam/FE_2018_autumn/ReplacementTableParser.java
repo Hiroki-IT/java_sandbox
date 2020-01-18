@@ -1,4 +1,5 @@
 import java.util.Map; 
+import java.util.List;
 
 /**
  * 置換表生成体クラス
