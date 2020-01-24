@@ -1,3 +1,5 @@
+package FE_2018_autumn;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,9 +9,11 @@ import java.util.Map;
 public interface Fragment
 {
     /**
-     * 
-     * @param Map
-     * @return
+     * Replace string.
+     *
+     * @param table the table
+     *
+     * @return string
      */
     String replace(Map<String, List<String>> table); // Map<キーのデータ型, 値のデータ型>
 }

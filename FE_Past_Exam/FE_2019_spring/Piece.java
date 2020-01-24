@@ -1,3 +1,5 @@
+package FE_2019_spring;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +18,8 @@ public class Piece
 
     /**
      * コンストラクタ
-     * 
-     * @param Maze
+     *
+     * @param maze the maze
      */
     public Piece(Maze maze)
     {
@@ -43,8 +45,8 @@ public class Piece
 
     /**
      * 前方のマス目に進む
-     * 
-     * @return boolean
+     *
+     * @return boolean boolean
      */
     public boolean tryStepForward()
     {
@@ -59,8 +61,8 @@ public class Piece
 
     /**
      * 現在地がゴールかどうかを判定
-     * 
-     * @return boolean
+     *
+     * @return boolean boolean
      */
     public boolean isAtGoal()
     {
@@ -69,8 +71,8 @@ public class Piece
 
     /**
      * 履歴リストを返却
-     * 
-     * @return List
+     *
+     * @return List history
      */
     public List<Direction> getHistory()
     {

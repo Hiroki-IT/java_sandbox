@@ -1,3 +1,5 @@
+package FE_2019_spring;
+
 /**
  * 迷路クラス
  */
@@ -10,10 +12,10 @@ public class Maze
     private final Location startLocation;
 
     /**
-     * コンストラクタ　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
-     * 
-     * @param String
-     * @param int
+     * コンストラクタ
+     *
+     * @param mazeData the maze data
+     * @param width    the width
      */
     public Maze(String mazeData, int width)
     {
@@ -24,8 +26,8 @@ public class Maze
 
     /**
      * 開始地点の座標を返却
-     * 
-     * @return Location
+     *
+     * @return Location start location
      */
     public Location getStartLocation()
     {
@@ -34,30 +36,34 @@ public class Maze
 
     /**
      * 指定されたマス目がゴールかどうかを判定
-     * 
-     * @param Location
-     * @return boolean
+     *
+     * @param loc the loc
+     *
+     * @return boolean boolean
      */
     public boolean isGoal(Location loc)
     {
-        return mazeData.charAt(loc.y * width + loc.x) == 'G';   
+        return mazeData.charAt(loc.y * width + loc.x) == 'G';
     }
 
     /**
      * 指定されたマス目が通路かどうかを判定
-     * 
-     * @param Location
-     * @return boolean
+     *
+     * @param loc the loc
+     *
+     * @return boolean boolean
      */
     public boolean isBlank(Location loc)
     {
-        return mazeData.charAt(loc.y * width + loc.x) != '*';   
+        return mazeData.charAt(loc.y * width + loc.x) != '*';
     }
 
     /**
-     * 
-     * @param char
-     * @return Location
+     * Location of location.
+     *
+     * @param c the c
+     *
+     * @return Location location
      */
     public Location locationOf(char c)
     {

@@ -1,3 +1,5 @@
+package FE_2018_autumn;
+
 import java.util.Map;
 import java.util.List;
 
@@ -6,12 +8,15 @@ import java.util.List;
  */
 public class PassThrough implements Fragment
 {
-    final String string; 
+    /**
+     * The String.
+     */
+    final String string;
 
     /**
      * コンストラクタ
-     * 
-     * @param CharSequence
+     *
+     * @param cs the cs
      */
     PassThrough(CharSequence cs)
     {
@@ -20,8 +25,10 @@ public class PassThrough implements Fragment
 
     /**
      * テキストを返却
-     * 
-     * @param Map
+     *
+     * @param table the table
+     *
+     * @return the string
      */
     public String replace(Map<String, List<String>> table)
     {

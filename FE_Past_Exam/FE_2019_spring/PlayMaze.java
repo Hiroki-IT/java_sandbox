@@ -1,3 +1,5 @@
+package FE_2019_spring;
+
 import java.util.List;
 
 /**
@@ -7,8 +9,8 @@ public class PlayMaze
 {
     /**
      * mainメソッド
-     * 
-     * @param String
+     *
+     * @param args the input arguments
      */
     public static void main(String... args)
     {

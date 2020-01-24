@@ -1,3 +1,5 @@
+import FE_2018_autumn.Fragment;
+
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +30,7 @@ public class Template
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        for(Fragment fragment : fragmentList) { // 拡張for文
+        for(Fragment fragment : fragmentList) { // 拡張for文（=foreach）
             stringBuilder.append(fragment.replace(table)); // StringBuilerクラスに格納
         }
 

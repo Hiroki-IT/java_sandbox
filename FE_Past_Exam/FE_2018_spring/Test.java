@@ -1,19 +1,14 @@
-package com.example.test;
-
-import com.example.expr.Addition;
-import com.example.expr.Constant;
-import com.example.expr.Expression;
+package FE_2018_spring;
 
 /**
  * mainメソッド実行クラス
- * 
  */
 public class Test
 {
     /**
      * mainメソッド
-     * 
-     * @param String[]
+     *
+     * @param args the input arguments
      */
     public static void main(String[] args)
     {
@@ -21,9 +16,9 @@ public class Test
 
         Expression five = new Constant(5);
 
-        Expression add = new Addition(two,five);
-        
+        Expression add = new Addition(two, five);
+
         System.out.println(add + "=" + add.evaluate()); // addのtoStringは自動でコールされる
-        
+
     }
 }

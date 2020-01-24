@@ -1,3 +1,5 @@
+package FE_2018_autumn;
+
 import java.util.List;
 import java.util.Map;
 
@@ -6,12 +8,15 @@ import java.util.Map;
  */
 public class Replacer implements Fragment
 {
+    /**
+     * The Key.
+     */
     final String key;
 
     /**
      * コンストラクタ
-     * 
-     * @param CharSequence
+     *
+     * @param cs the cs
      */
     Replacer(CharSequence cs)
     {
@@ -20,8 +25,10 @@ public class Replacer implements Fragment
 
     /**
      * 置換後のテキストを返却
-     * 
-     * @param Map
+     *
+     * @param table the table
+     *
+     * @return the string
      */
     public String replace(Map<String, List<String>> table)
     {

@@ -1,3 +1,5 @@
+package FE_2019_autumn;
+
 /**
  * mainメソッド実行クラス
  */
@@ -5,9 +7,10 @@ public class Tester
 {
     /**
      * mainメソッド
-     * 
-     * @param String[]
-     * @throws InterruptedException
+     *
+     * @param args the input arguments
+     *
+     * @throws InterruptedException the interrupted exception
      */
     public static void main(String[] args) throws InterruptedException
     {
@@ -21,25 +24,25 @@ public class Tester
 
         /* @ */
     }
-    
+
     /**
-     * 
-     * @param String
-     * @param String
+     *
+     * @param user
+     * @param name
      */
     private static void createUserMobileDevice(String user, String name)
     {
         MobileDevice device = new MobileDevice(
-            name, messageList -> System.out.println(name + ":" + messageList) // ラムダ式での無名メソッド定義（引数->処理内容）
-            );
-        
+                name, messageList -> System.out.println(name + ":" + messageList) // ラムダ式での無名メソッド定義（引数->処理内容）
+        );
+
         Notifier notifier = Notifier.getInstance();
-        
+
         notifier.register(user, device);
 
-        new Thread(()->{ //ラムダ式での無名メソッド定義（引数なし->処理内容）
+        new Thread(() -> { //ラムダ式での無名メソッド定義（引数なし->処理内容）
             notifier.loopForMesseages(device);
-                System.out.printf("システム終了：%sの%s%n", user, name);
-            }).start();
+            System.out.printf("システム終了：%sの%s%n", user, name);
+        }).start();
     }
 }

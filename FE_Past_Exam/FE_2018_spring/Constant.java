@@ -1,8 +1,8 @@
-package com.example.expr; // namespace宣言に相当
+package FE_2018_spring; // namespace宣言に相当
 
 /**
  * ライブラリ
- * 
+ *
  * 定数数式クラス
  */
 public class Constant implements Expression
@@ -11,8 +11,8 @@ public class Constant implements Expression
 
     /**
      * コンストラクタ
-     * 
-     * @param int
+     *
+     * @param value the value
      */
     public Constant(int value)
     {
@@ -21,8 +21,8 @@ public class Constant implements Expression
 
     /**
      * 定数の値を返却
-     * 
-     * @return int
+     *
+     * @return int int
      */
     public int evaluate()
     {
@@ -31,7 +31,7 @@ public class Constant implements Expression
 
     /**
      * 数値を文字列に変換して返却
-     * 
+     *
      * @return String
      */
     public String toString()

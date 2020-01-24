@@ -1,4 +1,6 @@
-import java.util.Map; 
+package FE_2018_autumn;
+
+import java.util.Map;
 import java.util.List;
 
 /**
@@ -8,10 +10,10 @@ public class ReplacementTableParser
 {
     /**
      * 置換表を生成して返却
-     * 
-     * @return
+     *
+     * @return map
      */
-    public Map<String, List<String>> parse()
+    public static Map<String, List<String>> parse()
     {
         // キーと文字列のMapを生成して返却
         // 問題文より、詳しい実装は省略とのこと

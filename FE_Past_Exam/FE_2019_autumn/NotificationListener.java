@@ -1,3 +1,5 @@
+package FE_2019_autumn;
+
 import java.util.List;
 
 /**
@@ -7,8 +9,8 @@ public interface NotificationListener
 {
     /**
      * 通知受信メソッド
-     * 
-     * @param List
+     *
+     * @param messageList the message list
      */
     void onNotificationReceived(List<String> messageList); // public abstract は省略できる。
 }

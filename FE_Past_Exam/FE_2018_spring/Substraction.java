@@ -1,19 +1,17 @@
-package com.example.expr;
-
-import com.example.expr.Expression;
+package FE_2018_spring;
 
 /**
  * ライブラリ
- * 
+ *
  * 減法数式クラス
  */
 public class Substraction extends BinaryOperatorExpression implements Expression
 {
     /**
      * コンストラクタ
-     * 
-     * @param Expression
-     * @param Expression
+     *
+     * @param left  the left
+     * @param right the right
      */
     public Substraction(Expression left, Expression right)
     {
@@ -22,8 +20,8 @@ public class Substraction extends BinaryOperatorExpression implements Expression
 
     /**
      * 減法の結果を返却
-     * 
-     * @return int
+     *
+     * @return int int
      */
     public int evaluate()
     {
@@ -32,8 +30,8 @@ public class Substraction extends BinaryOperatorExpression implements Expression
 
     /**
      * 減法の記号を返却
-     * 
-     * @return Stirng
+     *
+     * @return Stirng operator
      */
     protected String getOperator()
     {
